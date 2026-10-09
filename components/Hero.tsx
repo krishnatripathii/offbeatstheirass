@@ -65,7 +65,7 @@ export const Hero: React.FC = () => {
           <span className="w-2 h-2 rounded-full bg-[#C6FF3D] shadow-[0_0_8px_#C6FF3D] animate-pulse" />
           <WaveformGlyph animated size="sm" className="text-[#F4F4F5]" />
           <span className="text-xs font-semibold tracking-wide text-[#F4F4F5]">
-            Open for new projects
+            Taking on new brands
           </span>
         </div>
 
@@ -77,7 +77,7 @@ export const Hero: React.FC = () => {
 
         {/* Subhead */}
         <p className="text-base sm:text-lg text-[var(--muted)] max-w-[640px] mx-auto leading-relaxed mb-10">
-          Offbeats builds brands, content and ads that make your competitors check your page twice. Your phone starts ringing. Your shop starts filling up.
+          Offbeats builds the brand, the content and the ads. You get the DMs, the bookings and the line out the door.
         </p>
 
         {/* CTA Buttons */}
@@ -86,20 +86,20 @@ export const Hero: React.FC = () => {
             onClick={openBooking}
             className="btn-primary w-full sm:w-auto px-7 h-12 text-sm font-semibold cursor-pointer shadow-[0_0_24px_rgba(255,255,255,0.2)]"
           >
-            Book a free strategy call
+            Get your free game plan
           </button>
           <Link
             href="#work"
             className="btn-secondary w-full sm:w-auto px-7 h-12 text-sm font-medium"
           >
-            See the work
+            Peek at the work
           </Link>
         </div>
 
         {/* Micro line under buttons */}
         <div className="flex items-center justify-center gap-2 text-xs text-[var(--muted)] mb-16 sm:mb-20">
           <Check className="w-3.5 h-3.5 text-[#C6FF3D]" strokeWidth={2} />
-          <span>Free 30-minute call. No pitch deck. No pressure.</span>
+          <span>30 minutes. Free. Zero cringe sales pitch.</span>
         </div>
 
         {/* Floating UI Cards Cluster */}
@@ -130,7 +130,7 @@ export const Hero: React.FC = () => {
             {/* Card 2 on Mobile: Content Calendar Preview */}
             <div className="glass-card p-4 bg-[var(--surface)] shadow-2xl">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider">Weekly Schedule</span>
+              <span className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider">This week&apos;s posts</span>
                 <span className="w-2 h-2 rounded-full bg-[#C6FF3D]" />
               </div>
               <div className="grid grid-cols-4 gap-1.5 text-center text-[10px]">
@@ -162,7 +162,7 @@ export const Hero: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#C6FF3D] animate-pulse" />
                   <span className="text-xs font-semibold tracking-wider text-[var(--text)] uppercase">
-                    Publishing Matrix
+                    This week&apos;s posts
                   </span>
                 </div>
                 <span className="text-[11px] text-[var(--muted)]">Week 42</span>
@@ -210,7 +210,7 @@ export const Hero: React.FC = () => {
               </div>
 
               <div className="p-3.5 rounded-xl bg-[var(--surface)] text-xs text-[#F4F4F5] border border-[var(--border)] leading-relaxed relative">
-                <span className="text-[var(--muted)] text-[10px] block mb-1">Incoming query</span>
+                <span className="text-[var(--muted)] text-[10px] block mb-1">New message</span>
                 &ldquo;Hi, do you have a table for 6 on Saturday?&rdquo;
               </div>
             </div>
@@ -222,7 +222,7 @@ export const Hero: React.FC = () => {
                   Enquiries this week
                 </span>
                 <span className="text-[11px] text-[#C6FF3D] font-medium flex items-center gap-1">
-                  Active trajectory <ArrowUpRight className="w-3.5 h-3.5" />
+                  Trend <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
 

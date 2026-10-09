@@ -29,10 +29,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://offbeats.agency"),
-  title: "Offbeats | Marketing Agency for Brands That Refuse to Blend In",
+  metadataBase: new URL("https://offbeats.agency"), // [ADD] replace with your real domain once connected
+  title: "Offbeats | Marketing That Gets Your Brand Talked About",
   description:
-    "Offbeats builds brands, content and ad campaigns that get local and growing businesses noticed. Book a free strategy call.",
+    "Offbeats builds brands, content and ads that get your business noticed, shared and booked. Free strategy call.",
   keywords: [
     "marketing agency",
     "brand identity",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "social media agency",
     "reels production",
     "local seo",
-    "bengaluru marketing agency",
+    "india marketing agency",
   ],
   authors: [{ name: "Offbeats" }],
   icons: {
@@ -49,19 +49,19 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "Offbeats | Marketing Agency for Brands That Refuse to Blend In",
+    title: "Offbeats | Marketing That Gets Your Brand Talked About",
     description:
-      "Offbeats builds brands, content and ad campaigns that get local and growing businesses noticed. Book a free strategy call.",
+      "Offbeats builds brands, content and ads that get your business noticed, shared and booked. Free strategy call.",
     url: "https://offbeats.agency",
     siteName: "Offbeats",
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Offbeats | Marketing Agency for Brands That Refuse to Blend In",
+    title: "Offbeats | Marketing That Gets Your Brand Talked About",
     description:
-      "Offbeats builds brands, content and ad campaigns that get local and growing businesses noticed. Book a free strategy call.",
+      "Offbeats builds brands, content and ads that get your business noticed, shared and booked. Free strategy call.",
   },
   robots: {
     index: true,

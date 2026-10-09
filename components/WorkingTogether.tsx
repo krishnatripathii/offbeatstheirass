@@ -15,19 +15,19 @@ const MESSAGES: Message[] = [
     sender: "offbeats",
     senderName: "Offbeats",
     time: "10:14 AM",
-    text: "Reel 4 is ready. Hook is the steam rising off the first cup.",
+    text: "Reel 4 is ready. First frame is steam rising off the cup. Trust us.",
   },
   {
     sender: "you",
     senderName: "You",
     time: "10:18 AM",
-    text: "Love it. Post at 7?",
+    text: "Okay that's actually fire. Post at 7?",
   },
   {
     sender: "offbeats",
     senderName: "Offbeats",
     time: "10:21 AM",
-    text: "Scheduled for 7. Also, ad set B is beating A, so we're moving the budget over.",
+    text: "Locked for 7. Ad B is beating Ad A, so we're moving the budget over.",
   },
   {
     sender: "you",
@@ -62,7 +62,6 @@ export const WorkingTogether: React.FC = () => {
   useEffect(() => {
     if (!hasStarted) return;
 
-    // Sequential message reveal
     const timers: NodeJS.Timeout[] = [];
     MESSAGES.forEach((_, index) => {
       const timer = setTimeout(() => {
@@ -78,59 +77,56 @@ export const WorkingTogether: React.FC = () => {
     <section ref={containerRef} className="py-20 sm:py-32 relative overflow-hidden" aria-labelledby="working-together-heading">
       <div className="max-w-[1200px] mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Copy & Mini Features */}
+          {/* Left Column */}
           <div className="lg:col-span-5 text-left">
-            <span className="eyebrow-text block mb-3">How it feels</span>
+            <span className="eyebrow-text block mb-3">The vibe</span>
             <h2 id="working-together-heading" className="headline-h2 text-[#F4F4F5] mb-5">
-              Like we&apos;re sitting in your office.
+              Basically your in-house team. Minus the salaries.
             </h2>
             <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed mb-10">
-              A shared channel, one-tap approvals and same-day answers. Marketing shouldn&apos;t feel like waiting on a courier.
+              One group chat, one-tap approvals, replies the same day. Marketing shouldn&apos;t feel like waiting for a parcel.
             </p>
 
             <div className="flex flex-col gap-6">
-              {/* Feature 1 */}
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[#FF5A1F]">
                   <MessageSquare className="w-5 h-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-[#F4F4F5] mb-1">Shared channel.</h3>
+                  <h3 className="text-base font-semibold text-[#F4F4F5] mb-1">The group chat.</h3>
                   <p className="text-sm text-[var(--muted)] leading-relaxed">
-                    One group with our team and yours. Questions get answered where you already chat.
+                    Your team and ours in one place. Ask anything, get an answer before your chai goes cold.
                   </p>
                 </div>
               </div>
 
-              {/* Feature 2 */}
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[#FF2E93]">
                   <CheckCircle className="w-5 h-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-[#F4F4F5] mb-1">One-tap approvals.</h3>
+                  <h3 className="text-base font-semibold text-[#F4F4F5] mb-1">Thumbs up to approve.</h3>
                   <p className="text-sm text-[var(--muted)] leading-relaxed">
-                    See the post, approve it or ask for a change. No long email chains.
+                    See it, tap it, done. Or tell us what to tweak.
                   </p>
                 </div>
               </div>
 
-              {/* Feature 3 */}
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[#C6FF3D]">
                   <ShieldCheck className="w-5 h-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-[#F4F4F5] mb-1">Straight answers.</h3>
+                  <h3 className="text-base font-semibold text-[#F4F4F5] mb-1">Zero sugarcoating.</h3>
                   <p className="text-sm text-[var(--muted)] leading-relaxed">
-                    If something isn&apos;t working, you hear it from us first.
+                    If something&apos;s not working, you hear it from us first.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Chat Thread Mockup inside glowing frame */}
+          {/* Right Column: Chat mockup */}
           <div className="lg:col-span-7">
             <div className="glass-card-featured p-6 sm:p-8 bg-[var(--surface-2)] shadow-[0_25px_60px_rgba(0,0,0,0.7)] text-left relative">
               {/* Chat Header */}
@@ -146,12 +142,12 @@ export const WorkingTogether: React.FC = () => {
                     <h4 className="text-sm font-semibold text-[#F4F4F5]">Offbeats x Your Brand</h4>
                     <p className="text-[11px] text-[var(--muted)] flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#C6FF3D] inline-block" />
-                      Active team sync
+                      Online
                     </p>
                   </div>
                 </div>
                 <span className="text-xs text-[var(--muted)] px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)]">
-                  WhatsApp Direct
+                  WhatsApp
                 </span>
               </div>
 
@@ -169,12 +165,9 @@ export const WorkingTogether: React.FC = () => {
                       } ${isOffbeats ? "items-start" : "items-end"}`}
                     >
                       <div className="flex items-center gap-2 mb-1 px-1">
-                        <span className="text-[11px] font-medium text-[var(--muted)]">
-                          {msg.senderName}
-                        </span>
+                        <span className="text-[11px] font-medium text-[var(--muted)]">{msg.senderName}</span>
                         <span className="text-[10px] text-neutral-600">{msg.time}</span>
                       </div>
-
                       <div
                         className={`max-w-[85%] sm:max-w-[78%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                           isOffbeats
@@ -188,7 +181,6 @@ export const WorkingTogether: React.FC = () => {
                   );
                 })}
 
-                {/* Live typing indicator if still typing */}
                 {visibleMessagesCount > 0 && visibleMessagesCount < MESSAGES.length && (
                   <div className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[var(--surface)] border border-[var(--border)] w-max text-xs text-[var(--muted)] animate-pulse">
                     <span className="w-1.5 h-1.5 rounded-full bg-white/40" />

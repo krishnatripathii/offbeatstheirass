@@ -10,28 +10,28 @@ interface FAQItem {
 
 const FAQS: FAQItem[] = [
   {
-    question: "How soon will I see results?",
-    answer: "Ads and content start moving inside the first month. Brand and search take longer. We'll tell you straight which is which.",
+    question: "How fast will this work?",
+    answer: "Ads and content start moving within the first month. Brand and search are slow burns. We'll tell you which is which.",
   },
   {
-    question: "Do I need a big budget?",
-    answer: "No. We'll tell you what to spend and what to skip. If a smaller plan fits, that's the plan.",
+    question: "Do I need deep pockets?",
+    answer: "Nope. We'll tell you what to spend and what to skip. If a smaller plan does the job, that's the plan.",
   },
   {
-    question: "Will you understand my kind of business?",
-    answer: "We work best with local and growing businesses like cafes, clinics, retail, education and D2C. If we're not the right fit, we'll say so on the call.",
+    question: "Do you get my kind of business?",
+    answer: "We're best with cafes, clinics, retail, education and D2C. Not a fit? We'll say so on the call. No hard feelings.",
   },
   {
-    question: "Who owns the accounts and content?",
-    answer: "You do. Every page, file and password stays yours from day one.",
+    question: "Who owns everything?",
+    answer: "You do. Every account, file and password is yours from day one.",
   },
   {
-    question: "Is there a long contract?",
-    answer: "No. Everything runs month to month.",
+    question: "Am I locked in?",
+    answer: "No traps. Everything runs month to month.",
   },
   {
-    question: "What do you need from me?",
-    answer: "A 30-minute call, access to your accounts and quick approvals. We handle the rest.",
+    question: "What do I have to do?",
+    answer: "Show up for a 30-minute call, give us access and approve things quickly. We handle the rest.",
   },
 ];
 
@@ -50,10 +50,10 @@ export const FAQ: React.FC = () => {
           <div className="lg:col-span-5 text-left">
             <span className="eyebrow-text block mb-3">FAQ</span>
             <h2 id="faq-heading" className="headline-h2 text-[#F4F4F5] mb-5">
-              Questions people ask before booking.
+              Stuff you&apos;re probably wondering.
             </h2>
             <p className="text-base text-[var(--muted)] leading-relaxed">
-              Straight answers to common questions about our engagements, contracts, and delivery timelines.
+              Short answers. Still curious? Ask us on the call.
             </p>
           </div>
 

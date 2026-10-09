@@ -76,13 +76,13 @@ export const Navbar: React.FC = () => {
             rel="noopener noreferrer"
             className="text-sm font-medium text-[var(--muted)] hover:text-[#F4F4F5] transition-colors"
           >
-            WhatsApp us
+            Slide into WhatsApp
           </a>
           <button
             onClick={openBooking}
             className="btn-primary text-xs px-5 h-9 cursor-pointer"
           >
-            Book a free call
+            Book a call
           </button>
         </div>
 

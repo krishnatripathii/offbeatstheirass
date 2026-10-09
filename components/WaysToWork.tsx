@@ -10,19 +10,22 @@ export const WaysToWork: React.FC = () => {
   const tiers = [
     {
       name: "Launch.",
-      description: "For new brands. Identity, website and your first month of content.",
+      description: "New brand? Get the identity, the website and your first month of content.",
       featured: false,
+      buttonLabel: "Start here",
     },
     {
       name: "Growth.",
-      description: "Monthly content, ads and reporting. For businesses ready to scale.",
+      description: "Content, ads and reporting every month. For brands ready to get loud.",
       featured: true,
-      badge: "Most picked",
+      badge: "Best starting point",
+      buttonLabel: "Let's talk",
     },
     {
       name: "Full partner.",
-      description: "We run your whole marketing. You run your business.",
+      description: "Hand us the whole thing. You focus on running the business.",
       featured: false,
+      buttonLabel: "Take it all",
     },
   ];
 
@@ -32,7 +35,7 @@ export const WaysToWork: React.FC = () => {
         {/* H2 */}
         <div className="max-w-2xl mx-auto mb-16">
           <h2 id="ways-to-work-heading" className="headline-h2 text-[#F4F4F5] mb-4">
-            Pick how you want to start.
+            Choose your starting level.
           </h2>
         </div>
 
@@ -46,7 +49,7 @@ export const WaysToWork: React.FC = () => {
                   className="glass-card-featured p-8 sm:p-9 bg-[var(--surface-2)] shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col justify-between relative transform md:-translate-y-2 hover:-translate-y-3 transition-transform duration-300"
                 >
                   <div>
-                    {/* Small badge: Most picked */}
+                    {/* Badge: Best starting point */}
                     <div className="flex items-center justify-between mb-6">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FF5A1F]/15 text-[#FF5A1F] border border-[#FF5A1F]/30 shadow-[0_0_12px_rgba(255,90,31,0.2)]">
                         <Sparkles className="w-3.5 h-3.5" />
@@ -68,7 +71,7 @@ export const WaysToWork: React.FC = () => {
                       onClick={openBooking}
                       className="w-full h-12 btn-primary text-sm font-semibold cursor-pointer shadow-[0_0_24px_rgba(255,255,255,0.2)]"
                     >
-                      Talk to us
+                      {tier.buttonLabel}
                     </button>
                   </div>
                 </div>
@@ -95,7 +98,7 @@ export const WaysToWork: React.FC = () => {
                     onClick={openBooking}
                     className="w-full h-12 btn-secondary text-sm font-medium cursor-pointer"
                   >
-                    Talk to us
+                    {tier.buttonLabel}
                   </button>
                 </div>
               </div>
@@ -105,7 +108,7 @@ export const WaysToWork: React.FC = () => {
 
         {/* Small muted line under cards */}
         <p className="text-sm text-[var(--muted)]">
-          Month-to-month. Stay because it&apos;s working.
+          Month to month. Stay only if it&apos;s working.
         </p>
       </div>
     </section>

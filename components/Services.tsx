@@ -27,43 +27,43 @@ const SERVICES: ServiceItem[] = [
     id: "brand-identity",
     icon: Palette,
     title: "Brand identity.",
-    summary: "Name, logo, colours and voice. A look people recognise from across the street.",
-    expandLine: "Includes a one-page brand guide so every post, board and bill looks like it came from the same hand.",
+    summary: "A name, a look and a voice people spot from across the street.",
+    expandLine: "You also get a one-page brand guide so everything you put out looks like the same hand made it.",
   },
   {
     id: "social-media",
     icon: Share2,
     title: "Social media.",
-    summary: "A posting rhythm that fits your business, with content people actually stop for.",
-    expandLine: "Planned monthly, designed in-house, scheduled for the hours your customers are scrolling.",
+    summary: "Posts people send to their friends instead of scrolling past.",
+    expandLine: "Planned monthly, designed in-house, posted when your customers are actually awake.",
   },
   {
     id: "reels-video",
     icon: Video,
     title: "Reels and video.",
-    summary: "Short, sharp, shot to be watched past the first two seconds.",
-    expandLine: "Scripts, shoot direction, editing and captions, all handled.",
+    summary: "Videos that hook in two seconds flat. The rest is easy.",
+    expandLine: "Script, shoot direction, edit and captions. You just show up.",
   },
   {
     id: "performance-ads",
     icon: Target,
     title: "Performance ads.",
-    summary: "Meta and Google campaigns built for enquiries, not likes.",
-    expandLine: "We test, cut what's wasting money and push budget to what's converting.",
+    summary: "Meta and Google ads built to get enquiries. Likes don't pay rent.",
+    expandLine: "We test, kill whatever wastes money and feed whatever works.",
   },
   {
     id: "websites",
     icon: Globe,
     title: "Websites.",
-    summary: "Fast, clean sites that turn visitors into calls and bookings.",
-    expandLine: "Built to load quickly on a cheap phone and a slow connection, because that's where most of your traffic is.",
+    summary: "A site that loads fast, looks sharp and turns visitors into bookings.",
+    expandLine: "Built to fly on a budget phone and a patchy connection, because that's where your customers are.",
   },
   {
     id: "local-seo",
     icon: MapPin,
     title: "Local SEO.",
-    summary: "Show up when someone nearby searches for what you sell.",
-    expandLine: "Google Business profile, reviews, local pages and the small fixes that move you up the map.",
+    summary: "So when someone nearby searches for what you sell, it's you.",
+    expandLine: "Google profile, reviews, local pages and the small fixes that push you up the map.",
   },
 ];
 
@@ -82,10 +82,10 @@ export const Services: React.FC = () => {
         <div className="max-w-3xl mb-16 text-left">
           <span className="eyebrow-text block mb-3">What we do</span>
           <h2 id="services-heading" className="headline-h2 text-[#F4F4F5] mb-5">
-            Everything your brand needs to get seen, trusted and picked.
+            Your brand&apos;s full glow-up, à la carte.
           </h2>
           <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-            Pick one service or let us run the whole thing. Either way it&apos;s built around one goal: more customers.
+            Take one service or hand us the keys. Either way the plan is simple: more customers.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export const Services: React.FC = () => {
           })}
         </div>
 
-        {/* Below grid: Wide banner card with moving gradient border */}
+        {/* Below grid: Wide banner card */}
         <div className="glass-card-featured p-6 sm:p-8 bg-[var(--surface-2)] shadow-2xl relative overflow-hidden text-left">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
             <div className="flex items-start sm:items-center gap-4">
@@ -150,10 +150,10 @@ export const Services: React.FC = () => {
               </div>
               <div className="max-w-2xl">
                 <h3 className="font-heading text-lg sm:text-xl font-semibold text-[#F4F4F5] mb-1.5">
-                  Leads going cold in your DMs?
+                  Still replying to enquiries at midnight?
                 </h3>
                 <p className="text-sm sm:text-[15px] text-[var(--muted)] leading-relaxed">
-                  We set up WhatsApp replies that answer instantly, qualify the enquiry and book the call, even at 2 a.m.
+                  We set up WhatsApp replies that answer instantly, size up the lead and book the call while you sleep.
                 </p>
               </div>
             </div>
@@ -162,7 +162,7 @@ export const Services: React.FC = () => {
               onClick={openBooking}
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#F4F4F5] hover:text-[var(--lime)] transition-colors shrink-0 group cursor-pointer"
             >
-              <span>Ask about automation</span>
+              <span>Make it automatic</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
             </button>
           </div>

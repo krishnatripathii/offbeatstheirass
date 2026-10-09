@@ -6,29 +6,29 @@ import { User, Mic, TrendingUp, CalendarCheck } from "lucide-react";
 const FEATURES = [
   {
     icon: User,
-    title: "One person who answers.",
-    description: "You talk to the people doing the work. No account managers playing telephone.",
+    title: "No middleman.",
+    description: "The person who makes your stuff is the person who picks up your call.",
     accent: "from-[#FF5A1F]/20 to-[#FF5A1F]/5",
     iconColor: "text-[#FF5A1F]",
   },
   {
     icon: Mic,
-    title: "Content in your voice.",
-    description: "We spend week one learning how you talk, sell and joke. Then we write it that way.",
+    title: "Sounds like you, only better.",
+    description: "Week one, we learn how you talk, sell and joke. After that, your posts stop reading like a template.",
     accent: "from-[#FF2E93]/20 to-[#FF2E93]/5",
     iconColor: "text-[#FF2E93]",
   },
   {
     icon: TrendingUp,
-    title: "Ads tied to revenue.",
-    description: "Every rupee has a job. You'll see what it brought in, not just how many people scrolled past.",
+    title: "Every rupee earns its keep.",
+    description: "Your ad money has a job. You'll see what it brought in, not how many strangers glanced at it.",
     accent: "from-[#7B5CFF]/20 to-[#7B5CFF]/5",
     iconColor: "text-[#7B5CFF]",
   },
   {
     icon: CalendarCheck,
-    title: "A Friday update you'll read.",
-    description: "One short note in plain language. What worked, what didn't, what changes next week.",
+    title: "Friday report, no jargon.",
+    description: "One short message. What worked, what flopped, what we're changing. Two minutes to read.",
     accent: "from-[#C6FF3D]/20 to-[#C6FF3D]/5",
     iconColor: "text-[#C6FF3D]",
   },
@@ -42,10 +42,10 @@ export const WhyBrandsSwitch: React.FC = () => {
         <div className="max-w-3xl mb-16 text-left">
           <span className="eyebrow-text block mb-3">Why Offbeats</span>
           <h2 id="why-heading" className="headline-h2 text-[#F4F4F5] mb-5">
-            Most agencies send a calendar and vanish. We stay until the numbers move.
+            Other agencies send a calendar and ghost you. We&apos;re not built like that.
           </h2>
           <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-            You hired someone to grow the business, not to produce posts. Here&apos;s how we work differently.
+            You hired us to grow the business, not to post for the sake of posting. Fair.
           </p>
         </div>
 

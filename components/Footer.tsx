@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col items-start gap-4">
             <Logo animated glyphSize="md" />
             <p className="text-sm text-[var(--muted)] max-w-xs leading-relaxed">
-              Marketing for brands off the beaten track.
+              Marketing for brands that don&apos;t do beige.
             </p>
 
             {/* Social Icons */}
@@ -154,7 +154,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="hover:text-[#F4F4F5] transition-colors"
                 >
-                  WhatsApp Support
+                  WhatsApp
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

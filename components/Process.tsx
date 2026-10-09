@@ -38,20 +38,21 @@ export const Process: React.FC = () => {
             </defs>
           </svg>
         </div>
+
         {/* Header */}
         <div className="max-w-3xl mb-16 text-left">
           <span className="eyebrow-text block mb-3">The Offbeat method</span>
           <h2 id="process-heading" className="headline-h2 text-[#F4F4F5] mb-5">
-            Four steps. No mystery.
+            Four moves. No smoke and mirrors.
           </h2>
           <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-            You&apos;ll always know what we&apos;re doing, why, and what happens next.
+            You&apos;ll see every move before it goes live.
           </p>
         </div>
 
         {/* 12-Column Asymmetric Bento Grid */}
         <div className="relative grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Tile 1: Dig (7 cols) */}
+          {/* Tile 1: Do the homework (7 cols) */}
           <div className="md:col-span-7 p-7 sm:p-8 rounded-[20px] bg-[var(--surface)] border border-[var(--border)] hover:border-white/20 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group text-left">
             <div className="relative z-10 mb-8 max-w-md">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF5A1F] via-[#FF2E93] to-[#7B5CFF] p-[1px] mb-4">
@@ -60,26 +61,23 @@ export const Process: React.FC = () => {
                 </div>
               </div>
               <h3 className="font-heading text-2xl font-semibold text-[#F4F4F5] mb-2">
-                Dig.
+                Do the homework.
               </h3>
               <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-                We study your customers, your competitors and your numbers before touching a design file.
+                We study your customers, your rivals and your numbers before opening a design file.
               </p>
             </div>
 
-            {/* Mockup: Stack of 3 research notes with highlighted lines */}
+            {/* Mockup: Stack of 3 research notes */}
             <div className="relative h-28 sm:h-32 w-full max-w-[260px] self-end mt-4">
-              {/* Note 3 (bottom) */}
               <div className="absolute bottom-0 right-4 w-48 h-20 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] p-3 rotate-3 shadow-lg opacity-40">
                 <div className="w-16 h-1.5 rounded-full bg-white/20 mb-2" />
                 <div className="w-28 h-1.5 rounded-full bg-white/10" />
               </div>
-              {/* Note 2 (middle) */}
               <div className="absolute bottom-2 right-2 w-48 h-20 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] p-3 -rotate-2 shadow-lg opacity-70">
                 <div className="w-20 h-1.5 rounded-full bg-white/30 mb-2" />
                 <div className="w-32 h-1.5 rounded-full bg-[#FF5A1F]/40" />
               </div>
-              {/* Note 1 (top) */}
               <div className="absolute bottom-4 right-0 w-52 h-22 rounded-xl bg-[#161A22] border border-white/15 p-3.5 shadow-xl rotate-0">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[10px] font-semibold text-[var(--muted)] uppercase">Competitor Audit</span>
@@ -91,7 +89,7 @@ export const Process: React.FC = () => {
             </div>
           </div>
 
-          {/* Tile 2: Plan (5 cols) */}
+          {/* Tile 2: Map it (5 cols) */}
           <div className="md:col-span-5 p-7 sm:p-8 rounded-[20px] bg-[var(--surface)] border border-[var(--border)] hover:border-white/20 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group text-left">
             <div className="relative z-10 mb-6">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF5A1F] via-[#FF2E93] to-[#7B5CFF] p-[1px] mb-4">
@@ -100,14 +98,14 @@ export const Process: React.FC = () => {
                 </div>
               </div>
               <h3 className="font-heading text-2xl font-semibold text-[#F4F4F5] mb-2">
-                Plan.
+                Map it.
               </h3>
               <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-                One clear plan: who we&apos;re talking to, what we&apos;re saying, where, and how often.
+                One plan: who we&apos;re talking to, what we&apos;re saying, where, and how often.
               </p>
             </div>
 
-            {/* Mockup: Mini month calendar with colored dots */}
+            {/* Mockup: Mini month calendar */}
             <div className="p-3.5 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] w-full max-w-[220px] self-end mt-4 shadow-xl">
               <div className="text-[10px] font-medium text-[var(--muted)] mb-2 flex justify-between">
                 <span>Month Plan</span>
@@ -127,7 +125,7 @@ export const Process: React.FC = () => {
             </div>
           </div>
 
-          {/* Tile 3: Ship (5 cols) */}
+          {/* Tile 3: Ship it (5 cols) */}
           <div className="md:col-span-5 p-7 sm:p-8 rounded-[20px] bg-[var(--surface)] border border-[var(--border)] hover:border-white/20 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group text-left">
             <div className="relative z-10 mb-6">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF5A1F] via-[#FF2E93] to-[#7B5CFF] p-[1px] mb-4">
@@ -136,14 +134,14 @@ export const Process: React.FC = () => {
                 </div>
               </div>
               <h3 className="font-heading text-2xl font-semibold text-[#F4F4F5] mb-2">
-                Ship.
+                Ship it.
               </h3>
               <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-                Content, ads and pages go live on a fixed schedule. No &ldquo;almost ready.&rdquo;
+                Everything goes live on a set schedule. &ldquo;Almost ready&rdquo; is not in our vocabulary.
               </p>
             </div>
 
-            {/* Mockup: Publish queue with 3 rows and green ticks */}
+            {/* Mockup: Publish queue */}
             <div className="p-3 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] w-full max-w-[240px] self-end mt-4 shadow-xl flex flex-col gap-2">
               {[
                 { title: "Meta Ad Creative", status: "Live" },
@@ -161,7 +159,7 @@ export const Process: React.FC = () => {
             </div>
           </div>
 
-          {/* Tile 4: Sharpen (7 cols) */}
+          {/* Tile 4: Turn it up (7 cols) */}
           <div className="md:col-span-7 p-7 sm:p-8 rounded-[20px] bg-[var(--surface)] border border-[var(--border)] hover:border-white/20 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group text-left">
             <div className="relative z-10 mb-6 max-w-md">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF5A1F] via-[#FF2E93] to-[#7B5CFF] p-[1px] mb-4">
@@ -170,18 +168,17 @@ export const Process: React.FC = () => {
                 </div>
               </div>
               <h3 className="font-heading text-2xl font-semibold text-[#F4F4F5] mb-2">
-                Sharpen.
+                Turn it up.
               </h3>
               <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-                We read the results every week and put more into what&apos;s working.
+                Every week we read the results and pour fuel on whatever&apos;s working.
               </p>
             </div>
 
-            {/* Mockup: Small bar chart with one bar highlighted in the gradient */}
+            {/* Mockup: Bar chart — no number label */}
             <div className="p-4 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] w-full max-w-[240px] self-end mt-4 shadow-xl">
               <div className="flex justify-between items-center text-[10px] text-[var(--muted)] mb-3">
-                <span>Weekly Iteration</span>
-                <span className="text-[#C6FF3D] font-semibold">+68% efficiency</span>
+                <span>Weekly iteration</span>
               </div>
               <div className="h-16 flex items-end justify-between gap-2 px-1">
                 <div className="w-5 h-6 rounded-t bg-white/10" />
