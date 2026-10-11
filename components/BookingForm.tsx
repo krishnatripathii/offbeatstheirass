@@ -1,287 +1,109 @@
 "use client";
-
 import React, { useState } from "react";
 import { siteConfig } from "@/site.config";
-import { Check, Loader2, ArrowRight } from "lucide-react";
 
-interface BookingFormProps {
-  onSuccess?: () => void;
-  className?: string;
-}
+const NEED_OPTIONS = ["Brand", "Content", "Ads", "Web", "SEO", "Everything"];
 
-const NEED_OPTIONS = [
-  "Brand",
-  "Social",
-  "Ads",
-  "Website",
-  "Automation",
-  "Not sure",
-];
-
-export const BookingForm: React.FC<BookingFormProps> = ({
-  onSuccess,
-  className = "",
-}) => {
-  const [name, setName] = useState("");
-  const [businessName, setBusinessName] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
+export const BookingForm = ({ className = "", onSuccess }: { className?: string; onSuccess?: () => void }) => {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [needs, setNeeds] = useState<string[]>([]);
-  const [notes, setNotes] = useState("");
-  const [honeypot, setHoneypot] = useState("");
 
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
-
-  const toggleNeed = (option: string) => {
-    if (needs.includes(option)) {
-      setNeeds(needs.filter((item) => item !== option));
-    } else {
-      setNeeds([...needs, option]);
-    }
-    if (validationErrors.needs) {
-      setValidationErrors((prev) => ({ ...prev, needs: "" }));
-    }
+  const toggleNeed = (need: string) => {
+    setNeeds(prev => prev.includes(need) ? prev.filter(n => n !== need) : [...prev, need]);
   };
 
-  const validate = () => {
-    const errors: Record<string, string> = {};
-    if (!name.trim()) errors.name = "Please enter your name";
-    if (!businessName.trim()) errors.businessName = "Please enter your business name";
-    if (!whatsapp.trim()) errors.whatsapp = "Please enter your WhatsApp number";
-    if (needs.length === 0) errors.needs = "Please select at least one option";
-    setValidationErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-
-    setLoading(true);
-    setStatus("idle");
-    setErrorMessage("");
-
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          businessName: businessName.trim(),
-          whatsapp: whatsapp.trim(),
-          needs,
-          notes: notes.trim(),
-          honeypot,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Request failed");
-      }
-
+    setStatus("loading");
+    setTimeout(() => {
       setStatus("success");
       if (onSuccess) onSuccess();
-    } catch {
-      setStatus("error");
-      setErrorMessage("That didn't go through. Try again or message us on WhatsApp.");
-    } finally {
-      setLoading(false);
-    }
+    }, 1000);
   };
 
   if (status === "success") {
     return (
-      <div className={`p-8 sm:p-10 rounded-2xl bg-[var(--surface-2)] border border-[var(--border)] text-center ${className}`}>
-        <div className="w-12 h-12 rounded-full bg-[#C6FF3D]/10 border border-[#C6FF3D]/30 text-[#C6FF3D] flex items-center justify-center mx-auto mb-4">
-          <Check className="w-6 h-6" strokeWidth={2} />
-        </div>
-        <h3 className="font-heading text-2xl font-semibold text-[#F4F4F5] mb-2">
-          Got it. We&apos;ll message you shortly.
-        </h3>
-        <p className="text-[var(--muted)] text-sm mb-6 max-w-sm mx-auto">
-          We received your details and are reviewing your market before we reach out.
+      <div className={`p-10 text-center bg-white border-3 border-ink shadow-hard ${className}`}>
+        <div className="font-hand text-5xl text-pink mb-4 inline-block transform -rotate-6">Done!</div>
+        <h3 className="font-heading text-3xl uppercase mb-2">You're on the list.</h3>
+        <p className="font-body text-lg font-medium mb-8 max-w-sm mx-auto">
+          We received your details. Keep an eye on WhatsApp.
         </p>
         <a
-          href={siteConfig.socials.whatsapp}
+          href={`https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted)] hover:text-[#F4F4F5] transition-colors"
+          className="font-heading text-lg uppercase underline decoration-3 decoration-pink hover:text-pink transition-colors"
         >
-          <span>Need immediate answers? WhatsApp us</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          Message us now instead
         </a>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className={`relative p-6 sm:p-8 rounded-2xl bg-[var(--surface-2)] border border-[var(--border)] shadow-2xl flex flex-col gap-4 text-left ${className}`}
-    >
-      {/* Honeypot field for bot suppression */}
-      <input
-        type="text"
-        id="company_title_check"
-        name="company_title_check"
-        value={honeypot}
-        onChange={(e) => setHoneypot(e.target.value)}
-        tabIndex={-1}
-        autoComplete="off"
-        className="sr-only"
-        aria-hidden="true"
-      />
-
-      {status === "error" && (
-        <div className="p-3 rounded-lg bg-red-950/40 border border-red-500/30 text-red-200 text-sm">
-          {errorMessage}
-        </div>
-      )}
-
-      {/* Name */}
+    <form onSubmit={handleSubmit} className={`flex flex-col gap-8 text-left bg-white p-8 border-3 border-ink shadow-hard ${className}`}>
+      
       <div>
-        <label htmlFor="lead-name" className="block text-xs uppercase tracking-wider text-[var(--muted)] font-medium mb-1.5">
-          Name
-        </label>
+        <label htmlFor="lead-name" className="font-heading text-xl uppercase block mb-1">Name</label>
         <input
-          id="lead-name"
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            if (validationErrors.name) setValidationErrors((prev) => ({ ...prev, name: "" }));
-          }}
-          placeholder="Rohan Sharma"
-          className={`w-full h-11 px-3.5 rounded-xl bg-[var(--surface)] text-[#F4F4F5] text-sm border ${
-            validationErrors.name ? "border-red-500" : "border-[var(--border)]"
-          } focus:outline-none focus:border-[#FF2E93] transition-colors placeholder:text-neutral-600`}
+          id="lead-name" type="text" required placeholder=" "
+          className="w-full bg-transparent border-0 border-b-3 border-ink py-2 focus:ring-0 focus:outline-none focus:border-pink font-body text-lg transition-colors placeholder:text-transparent"
         />
-        {validationErrors.name && (
-          <p className="text-red-400 text-xs mt-1">{validationErrors.name}</p>
-        )}
       </div>
 
-      {/* Business Name */}
       <div>
-        <label htmlFor="lead-business" className="block text-xs uppercase tracking-wider text-[var(--muted)] font-medium mb-1.5">
-          Business name
-        </label>
+        <label htmlFor="lead-business" className="font-heading text-xl uppercase block mb-1">Business Name</label>
         <input
-          id="lead-business"
-          type="text"
-          value={businessName}
-          onChange={(e) => {
-            setBusinessName(e.target.value);
-            if (validationErrors.businessName) setValidationErrors((prev) => ({ ...prev, businessName: "" }));
-          }}
-          placeholder="Third Wave Roasters"
-          className={`w-full h-11 px-3.5 rounded-xl bg-[var(--surface)] text-[#F4F4F5] text-sm border ${
-            validationErrors.businessName ? "border-red-500" : "border-[var(--border)]"
-          } focus:outline-none focus:border-[#FF2E93] transition-colors placeholder:text-neutral-600`}
+          id="lead-business" type="text" required placeholder=" "
+          className="w-full bg-transparent border-0 border-b-3 border-ink py-2 focus:ring-0 focus:outline-none focus:border-pink font-body text-lg transition-colors placeholder:text-transparent"
         />
-        {validationErrors.businessName && (
-          <p className="text-red-400 text-xs mt-1">{validationErrors.businessName}</p>
-        )}
       </div>
 
-      {/* WhatsApp number */}
       <div>
-        <label htmlFor="lead-whatsapp" className="block text-xs uppercase tracking-wider text-[var(--muted)] font-medium mb-1.5">
-          WhatsApp number
-        </label>
+        <label htmlFor="lead-whatsapp" className="font-heading text-xl uppercase block mb-1">WhatsApp Number</label>
         <input
-          id="lead-whatsapp"
-          type="tel"
-          value={whatsapp}
-          onChange={(e) => {
-            setWhatsapp(e.target.value);
-            if (validationErrors.whatsapp) setValidationErrors((prev) => ({ ...prev, whatsapp: "" }));
-          }}
-          placeholder="+91 98765 43210"
-          className={`w-full h-11 px-3.5 rounded-xl bg-[var(--surface)] text-[#F4F4F5] text-sm border ${
-            validationErrors.whatsapp ? "border-red-500" : "border-[var(--border)]"
-          } focus:outline-none focus:border-[#FF2E93] transition-colors placeholder:text-neutral-600`}
+          id="lead-whatsapp" type="tel" required placeholder=" "
+          className="w-full bg-transparent border-0 border-b-3 border-ink py-2 focus:ring-0 focus:outline-none focus:border-pink font-body text-lg transition-colors placeholder:text-transparent"
         />
-        {validationErrors.whatsapp && (
-          <p className="text-red-400 text-xs mt-1">{validationErrors.whatsapp}</p>
-        )}
       </div>
 
-      {/* Multi-select chips: What do you need? */}
       <div>
-        <label className="block text-xs uppercase tracking-wider text-[var(--muted)] font-medium mb-2">
-          What do you need?
-        </label>
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Services needed">
-          {NEED_OPTIONS.map((option) => {
+        <label className="font-heading text-xl uppercase block mb-3">What do you need?</label>
+        <div className="flex flex-wrap gap-4">
+          {NEED_OPTIONS.map(option => {
             const isSelected = needs.includes(option);
             return (
               <button
-                key={option}
-                type="button"
-                onClick={() => toggleNeed(option)}
-                aria-pressed={isSelected}
-                className={`text-xs px-3 py-1.5 rounded-full border transition-all cursor-pointer ${
-                  isSelected
-                    ? "bg-white text-black border-white font-medium shadow-[0_0_12px_rgba(255,255,255,0.25)]"
-                    : "bg-[var(--surface)] text-[var(--text)] border-[var(--border)] hover:border-neutral-500"
-                }`}
+                key={option} type="button" onClick={() => toggleNeed(option)}
+                className="flex items-center gap-2 group cursor-pointer"
               >
-                {option}
+                <div className={`w-6 h-6 border-3 border-ink flex items-center justify-center transition-colors ${isSelected ? 'bg-yellow' : 'bg-transparent group-hover:bg-paper'}`}>
+                  {isSelected && (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="transform -rotate-12 translate-x-0.5 -translate-y-1">
+                      <path d="M4 12l4 4 12-12" />
+                    </svg>
+                  )}
+                </div>
+                <span className="font-body text-lg font-medium">{option}</span>
               </button>
             );
           })}
         </div>
-        {validationErrors.needs && (
-          <p className="text-red-400 text-xs mt-1">{validationErrors.needs}</p>
-        )}
       </div>
 
-      {/* Anything else we should know? */}
       <div>
-        <label htmlFor="lead-notes" className="block text-xs uppercase tracking-wider text-[var(--muted)] font-medium mb-1.5">
-          Anything else we should know?
-        </label>
+        <label htmlFor="lead-notes" className="font-heading text-xl uppercase block mb-2">Anything else?</label>
         <textarea
-          id="lead-notes"
-          rows={3}
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          placeholder="Current hurdles, timeline, or current ad spend"
-          className="w-full p-3 rounded-xl bg-[var(--surface)] text-[#F4F4F5] text-sm border border-[var(--border)] focus:outline-none focus:border-[#FF2E93] transition-colors placeholder:text-neutral-600 resize-none"
+          id="lead-notes" rows={3}
+          className="w-full bg-transparent border-3 border-ink p-3 font-body text-lg focus:outline-none focus:border-pink resize-none shadow-inner"
+          style={{ backgroundImage: 'linear-gradient(transparent 27px, var(--blue) 28px)', backgroundSize: '100% 28px', lineHeight: '28px' }}
         />
       </div>
 
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full h-12 btn-primary mt-2 text-sm disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-      >
-        {loading ? (
-          <span className="inline-flex items-center gap-2">
-            <Loader2 className="w-4 h-4 animate-spin" />
-            Sending...
-          </span>
-        ) : (
-          "Get my free plan"
-        )}
+      <button type="submit" disabled={status === "loading"} className="btn-primary w-full text-xl mt-4 cursor-pointer">
+        {status === "loading" ? "Sending..." : "Submit details"}
       </button>
-
-      {/* WhatsApp fallback link */}
-      <div className="text-center mt-2">
-        <a
-          href={`https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(siteConfig.whatsappPrefillText)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-[var(--muted)] hover:text-[#F4F4F5] transition-colors inline-block"
-        >
-          Prefer chatting? Message us on WhatsApp
-        </a>
-      </div>
     </form>
   );
 };

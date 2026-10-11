@@ -1,21 +1,17 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { useModal } from "./ModalContext";
+import { TILTS } from "@/lib/collage";
 
 export const KeyboardShortcutHandler: React.FC = () => {
   const { openBooking, isBookingOpen } = useModal();
   const [isTouchDevice, setIsTouchDevice] = useState(true);
 
   useEffect(() => {
-    // Detect if device supports touch only
-    const checkTouch = () => {
-      return "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    };
+    const checkTouch = () => "ontouchstart" in window || navigator.maxTouchPoints > 0;
     setIsTouchDevice(checkTouch());
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't trigger if user is typing in an input, textarea, or contentEditable element
       const target = e.target as HTMLElement | null;
       if (
         target &&
@@ -26,12 +22,9 @@ export const KeyboardShortcutHandler: React.FC = () => {
       ) {
         return;
       }
-
       if ((e.key === "b" || e.key === "B") && !e.metaKey && !e.ctrlKey && !e.altKey) {
         e.preventDefault();
-        if (!isBookingOpen) {
-          openBooking();
-        }
+        if (!isBookingOpen) openBooking();
       }
     };
 
@@ -52,13 +45,16 @@ export const KeyboardShortcutHandler: React.FC = () => {
           openBooking();
         }
       }}
-      className="hidden lg:flex fixed bottom-6 right-6 z-40 items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--surface-2)]/90 backdrop-blur-md border border-[var(--border)] shadow-lg hover:border-neutral-500 cursor-pointer transition-all hover:scale-105 group"
+      className="hidden lg:flex fixed bottom-8 right-8 z-[90] items-center gap-3 cursor-pointer group"
       aria-label="Press B to book a call"
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-[#C6FF3D] animate-pulse" />
-      <span className="text-xs text-[var(--muted)] group-hover:text-[#F4F4F5] font-medium">
-        Press <kbd className="px-1.5 py-0.5 rounded bg-[var(--surface)] border border-white/10 text-white font-mono text-[11px] font-semibold">B</kbd> to book
-      </span>
+      <span className="font-hand text-xl text-ink transition-transform group-hover:-translate-y-1">book a call</span>
+      <div 
+        className="w-12 h-12 bg-white border-3 border-ink shadow-hard rounded-sm flex items-center justify-center font-heading text-2xl text-ink uppercase transition-all shadow-hard-hover shadow-hard-active" 
+        style={{ transform: `rotate(${TILTS.hero?.keycap || -2}deg)` }}
+      >
+        B
+      </div>
     </div>
   );
 };

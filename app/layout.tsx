@@ -1,35 +1,35 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata } from "next";
+import { Archivo, Libre_Franklin, Caveat_Brush } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/site.config";
-import { ModalProvider } from "@/components/ModalContext";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { KeyboardShortcutHandler } from "@/components/KeyboardShortcutHandler";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { BookingModal } from "@/components/BookingModal";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { ModalProvider } from "@/components/ModalContext";
+import { NoiseOverlay } from "@/components/Collage";
+import { KeyboardShortcutHandler } from "@/components/KeyboardShortcutHandler";
+import { BookingModal } from "@/components/BookingModal";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
   subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+  axes: ["wdth"],
+});
+
+const libre = Libre_Franklin({
+  subsets: ["latin"],
+  variable: "--font-libre",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const caveat = Caveat_Brush({
+  weight: "400",
   subsets: ["latin"],
+  variable: "--font-hand",
   display: "swap",
 });
-
-export const viewport: Viewport = {
-  themeColor: "#07080A",
-  colorScheme: "dark",
-  width: "device-width",
-  initialScale: 1,
-};
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://offbeats.agency"), // [ADD] replace with your real domain once connected
+  metadataBase: new URL("https://offbeats.agency"),
   title: "Offbeats | Marketing That Gets Your Brand Talked About",
   description:
     "Offbeats builds brands, content and ads that get your business noticed, shared and booked. Free strategy call.",
@@ -43,11 +43,6 @@ export const metadata: Metadata = {
     "india marketing agency",
   ],
   authors: [{ name: "Offbeats" }],
-  icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
-  },
   openGraph: {
     title: "Offbeats | Marketing That Gets Your Brand Talked About",
     description:
@@ -71,63 +66,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: siteConfig.brandName,
-    description:
-      "Offbeats builds brands, content and ad campaigns that get local and growing businesses noticed. Book a free strategy call.",
-    url: "https://offbeats.agency",
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: siteConfig.city,
-      addressCountry: siteConfig.country,
-    },
-    priceRange: "$$",
-    sameAs: [
-      siteConfig.socials.instagram,
-      siteConfig.socials.linkedin,
-    ],
-  };
-
+}>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} dark`}
-    >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className="min-h-screen flex flex-col bg-[#07080A] text-[#F4F4F5] font-sans antialiased selection:bg-[#FF2E93] selection:text-white">
-        {/* Subtle noise overlay at 3% opacity */}
-        <div className="noise-overlay" aria-hidden="true" />
-
+    <html lang="en" className="scroll-smooth">
+      <body className={`${archivo.variable} ${libre.variable} ${caveat.variable} bg-paper text-ink antialiased relative selection:bg-yellow selection:text-ink overflow-x-hidden`}>
+        <NoiseOverlay />
         <ModalProvider>
-          {/* Scroll progress bar */}
-          <ScrollProgress />
-
-          {/* Sticky glass navbar */}
           <Navbar />
-
-          {/* Main page content */}
-          <div className="flex-1">{children}</div>
-
-          {/* Global Booking modal */}
+          <main className="relative z-10 pt-20">{children}</main>
+          <Footer />
           <BookingModal />
-
-          {/* B shortcut listener and desktop chip */}
           <KeyboardShortcutHandler />
-
-          {/* Mobile floating WhatsApp button */}
-          <FloatingWhatsApp />
         </ModalProvider>
       </body>
     </html>

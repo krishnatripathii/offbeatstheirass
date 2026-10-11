@@ -1,61 +1,37 @@
 "use client";
-
 import React from "react";
-import { BookingForm } from "./BookingForm";
-import { Check } from "lucide-react";
+import { useModal } from "./ModalContext";
+import { Z_INDEX } from "@/lib/collage";
 
-export const FinalCTA: React.FC = () => {
+export const FinalCTA = () => {
+  const { openBooking } = useModal();
+
   return (
-    <section
-      id="contact"
-      className="py-24 sm:py-36 relative overflow-hidden"
-      aria-labelledby="cta-heading"
-    >
-      {/* Huge violet-to-orange glow */}
-      <div className="radial-glow-cta" aria-hidden="true" />
-
-      {/* Masked line / grid pattern */}
-      <div
-        className="absolute inset-0 bg-grid-pattern mask-radial-fade opacity-35 pointer-events-none"
-        aria-hidden="true"
-      />
-
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Heading, Sub, and 2 check lines */}
-          <div className="lg:col-span-6 text-left">
-            <span className="eyebrow-text block mb-3">Get in touch</span>
-            <h2 id="cta-heading" className="headline-h2 text-[#F4F4F5] mb-5">
-              Ready to stop being the best-kept secret?
+    <section className="py-24 sm:py-32 relative bg-ink overflow-hidden border-b-3 border-paper" style={{ zIndex: Z_INDEX.sheet }}>
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 flex flex-col items-center text-center relative z-20">
+        
+        <div className="relative mb-12 select-none">
+          <span className="font-hand text-3xl text-pink absolute -top-10 left-1/2 -translate-x-1/2 transform -rotate-2 whitespace-nowrap">
+            Last chance
+          </span>
+          <div className="relative">
+            {/* Misregistration effect */}
+            <h2 className="font-heading text-5xl sm:text-7xl uppercase leading-none text-pink absolute top-[4px] left-[4px] w-full pointer-events-none blend-multiply">
+              Ready to stop blending in?
             </h2>
-            <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed mb-8">
-              Tell us about your business. We&apos;ll bring a plan, not a pitch.
-            </p>
-
-            <div className="flex flex-col gap-3.5">
-              <div className="flex items-center gap-3 text-sm sm:text-base text-[#F4F4F5]">
-                <div className="w-5 h-5 rounded-full bg-[#C6FF3D]/15 border border-[#C6FF3D]/30 flex items-center justify-center text-[#C6FF3D] shrink-0">
-                  <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
-                </div>
-                <span>Free call, zero strings</span>
-              </div>
-
-              <div className="flex items-center gap-3 text-sm sm:text-base text-[#F4F4F5]">
-                <div className="w-5 h-5 rounded-full bg-[#C6FF3D]/15 border border-[#C6FF3D]/30 flex items-center justify-center text-[#C6FF3D] shrink-0">
-                  <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
-                </div>
-                <span>You get a plan even if we never work together</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Glass card with BookingForm */}
-          <div className="lg:col-span-6">
-            <div className="glass-card-featured p-1 shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
-              <BookingForm className="!bg-[var(--surface-2)]/90 backdrop-blur-xl" />
-            </div>
+            <h2 className="font-heading text-5xl sm:text-7xl uppercase leading-none text-white relative">
+              Ready to stop blending in?
+            </h2>
           </div>
         </div>
+
+        <p className="font-body text-xl max-w-2xl font-medium mb-12 text-paper leading-relaxed">
+          Thirty minutes. We look at your brand, tell you what's broken, and how to fix it. If you want our help after that, great. If not, steal the plan.
+        </p>
+
+        <button onClick={openBooking} className="btn-primary text-xl px-12 py-5 shadow-hard hover:shadow-hard-hover active:shadow-hard-active">
+          Book a call
+        </button>
       </div>
     </section>
   );

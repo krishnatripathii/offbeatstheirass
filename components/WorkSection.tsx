@@ -1,95 +1,60 @@
 "use client";
-
 import React from "react";
 import { workItems } from "@/data/work";
 import { useModal } from "./ModalContext";
-import { ArrowUpRight } from "lucide-react";
+import { Tape } from "./Collage";
+import { TILTS, Z_INDEX } from "@/lib/collage";
 
-export const WorkSection: React.FC = () => {
+export const WorkSection = () => {
   const { openBooking } = useModal();
+  const tilts = [TILTS.work.card1, TILTS.work.card2, TILTS.work.card3];
 
   return (
-    <section id="work" className="py-20 sm:py-32 relative" aria-labelledby="work-heading">
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mb-16 text-left">
-          <span className="eyebrow-text block mb-3">Selected work</span>
-          <h2 id="work-heading" className="headline-h2 text-[#F4F4F5] mb-5">
+    <section id="work" className="pt-16 pb-24 sm:pb-32 relative bg-paper border-b-3 border-ink overflow-hidden" style={{ zIndex: Z_INDEX.sheet }}>
+      {/* Highlighter marker band across top */}
+      <div className="absolute top-32 left-0 w-full h-12 bg-yellow mix-blend-multiply transform -skew-y-1"></div>
+
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 relative z-20 mt-8">
+        <div className="max-w-3xl mb-24 text-left relative">
+          <span className="font-hand text-2xl text-ink absolute -top-8 left-0" style={{ transform: `rotate(${TILTS.work.card1}deg)` }}>Selected work</span>
+          <h2 className="font-heading text-5xl sm:text-6xl text-ink uppercase mt-6 leading-none relative z-10">
             A taste of what we make.
           </h2>
-          <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
+          <p className="font-body text-lg text-ink mt-6 max-w-[56ch] font-medium">
             Concepts built to get brands noticed.
           </p>
         </div>
 
-        {/* Sticky stacking cards */}
-        <div className="flex flex-col gap-8 relative">
+        <div className="flex flex-col gap-12 sm:gap-16 relative">
           {workItems.map((item, idx) => {
-            const abstractGradients = [
-              "radial-gradient(ellipse at 80% 20%, rgba(255, 90, 31, 0.28) 0%, rgba(255, 46, 147, 0.15) 40%, rgba(13, 15, 18, 0.95) 100%)",
-              "radial-gradient(ellipse at 20% 80%, rgba(123, 92, 255, 0.3) 0%, rgba(255, 46, 147, 0.18) 40%, rgba(13, 15, 18, 0.95) 100%)",
-              "radial-gradient(ellipse at 60% 60%, rgba(198, 255, 61, 0.2) 0%, rgba(255, 90, 31, 0.2) 50%, rgba(13, 15, 18, 0.95) 100%)",
-            ];
+            const tilt = tilts[idx % tilts.length];
 
             return (
-              <div
-                key={item.id}
-                style={{ top: `calc(100px + ${idx * 24}px)` }}
-                className="sticky rounded-[24px] bg-[var(--surface)] border border-[var(--border)] shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden transition-all duration-300 hover:border-white/20"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[420px]">
-                  {/* Left: Content */}
-                  <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between text-left">
-                    <div>
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[var(--surface-2)] border border-[var(--border)] text-[var(--muted)] mb-6">
-                        Sample concept
-                      </span>
+              <div key={item.id} className="relative w-full max-w-4xl mx-auto flex flex-col md:flex-row bg-white border-3 border-ink shadow-hard p-4 sm:p-6" style={{ transform: `rotate(${tilt}deg)` }}>
+                <Tape tilt={idx % 2 === 0 ? 3 : -2} className="-top-4 left-1/2 -translate-x-1/2" width="w-24" />
+                
+                {/* Pink Rubber Stamp */}
+                <div className="absolute -top-6 -right-4 sm:-top-8 sm:-right-8 border-4 border-pink text-pink rounded-full w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center font-heading text-lg sm:text-xl uppercase text-center mix-blend-multiply opacity-90 p-2 leading-none shadow-hard-sm bg-paper/50 backdrop-blur-sm" style={{ transform: `rotate(${TILTS.work.stamp}deg)`, zIndex: Z_INDEX.sticker }}>
+                  Sample<br/>Concept
+                </div>
 
-                      <h3 className="font-heading text-2xl sm:text-3xl font-semibold text-[#F4F4F5] mb-4">
-                        {item.name}
-                      </h3>
+                {/* Image Area (Halftone) */}
+                <div className="w-full md:w-1/2 aspect-video bg-paper border-3 border-ink halftone-blue flex items-center justify-center mb-6 md:mb-0 md:mr-8 relative overflow-hidden shadow-inner">
+                  <span className="font-hand text-2xl text-ink bg-white px-3 py-1 border-2 border-ink shadow-sm">{item.category}</span>
+                </div>
 
-                      <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-6">
-                        {item.summary}
-                      </p>
-                    </div>
-
-                    <div>
-                      <button
-                        type="button"
-                        onClick={openBooking}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#F4F4F5] hover:text-[var(--accent-1)] transition-colors group cursor-pointer"
-                      >
-                        <span>View concept</span>
-                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Right: Abstract gradient visual */}
-                  <div
-                    className="lg:col-span-7 relative min-h-[260px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[var(--border)] flex items-center justify-center p-8 overflow-hidden"
-                    style={{ background: abstractGradients[idx % abstractGradients.length] }}
-                  >
-                    <div className="w-full max-w-md h-52 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-6 flex flex-col justify-between relative shadow-2xl">
-                      <div className="flex items-center justify-between">
-                        <div className="flex gap-1.5">
-                          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                        </div>
-                        <span className="text-[10px] font-mono tracking-wider text-[var(--muted)] uppercase">{item.category}</span>
-                      </div>
-
-                      <div className="space-y-2.5">
-                        <div className="h-2 w-3/4 bg-white/20 rounded-full" />
-                        <div className="h-2 w-1/2 bg-white/10 rounded-full" />
-                      </div>
-
-                      <div className="flex items-center pt-4 border-t border-white/10">
-                        <span className="text-xs text-[var(--muted)]">Sample concept</span>
-                      </div>
-                    </div>
+                {/* Content */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center py-4 relative z-10">
+                  <h3 className="font-heading text-2xl sm:text-3xl uppercase mb-4 pr-16">{item.name}</h3>
+                  <p className="font-body text-base font-medium mb-8 leading-relaxed">
+                    {item.summary}
+                  </p>
+                  
+                  <div>
+                    <button type="button" onClick={openBooking} className="group relative inline-flex items-center text-ink font-heading text-lg uppercase cursor-pointer">
+                      <span className="relative z-10">View concept</span>
+                      <span className="absolute bottom-1 left-0 w-full h-3 bg-yellow mix-blend-multiply transition-all group-hover:h-[80%]"></span>
+                    </button>
                   </div>
                 </div>
               </div>
